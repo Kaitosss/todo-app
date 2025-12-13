@@ -27,6 +27,7 @@ const Index = () => {
 
   const todos = useQuery(api.todos.getTodos);
   const toggleTodo = useMutation(api.todos.toggleTodo);
+  const deleteTodo = useMutation(api.todos.deleteTodo);
 
   const isLoading = todos === undefined;
 
@@ -38,6 +39,17 @@ const Index = () => {
     } catch (error) {
       Alert.alert("Error", "Failed to toggle todo");
     }
+  };
+
+  const handleDeleteTodo = (id: Id<"todos">) => {
+    Alert.alert("Delete Todo", "Are you sure you want to delete this todo?", [
+      { text: "Cancle", style: "cancel" },
+      {
+        text: "Delete",
+        style: "destructive",
+        onPress: () => deleteTodo({ id }),
+      },
+    ]);
   };
 
   const renderTodoItems = ({ item }: { item: Todo }) => {
@@ -96,7 +108,10 @@ const Index = () => {
                   <Ionicons name="pencil" size={14} color={"#fff"} />
                 </LinearGradient>
               </TouchableOpacity>
-              <TouchableOpacity activeOpacity={0.8}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => handleDeleteTodo(item._id)}
+              >
                 <LinearGradient
                   colors={colors.gradients.danger}
                   style={homeStyles.actionButton}
