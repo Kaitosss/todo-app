@@ -1,4 +1,5 @@
 import createHomeStyles from "@/assets/styles/home.styles";
+import EmptyState from "@/components/EmptyState";
 import Header from "@/components/Header";
 import LoadingSpin from "@/components/LoadingSpin";
 import TodoInput from "@/components/TodoInput";
@@ -12,6 +13,7 @@ import {
   Alert,
   FlatList,
   StatusBar,
+  Text,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -70,6 +72,40 @@ const Index = () => {
               )}
             </LinearGradient>
           </TouchableOpacity>
+
+          <View style={homeStyles.todoTextContainer}>
+            <Text
+              style={[
+                homeStyles.todoText,
+                item.isCompleted && {
+                  textDecorationLine: "line-through",
+                  color: colors.textMuted,
+                  opacity: 0.6,
+                },
+              ]}
+            >
+              {item.text}
+            </Text>
+
+            <View style={homeStyles.todoActions}>
+              <TouchableOpacity activeOpacity={0.8}>
+                <LinearGradient
+                  colors={colors.gradients.warning}
+                  style={homeStyles.actionButton}
+                >
+                  <Ionicons name="pencil" size={14} color={"#fff"} />
+                </LinearGradient>
+              </TouchableOpacity>
+              <TouchableOpacity activeOpacity={0.8}>
+                <LinearGradient
+                  colors={colors.gradients.danger}
+                  style={homeStyles.actionButton}
+                >
+                  <Ionicons name="trash" size={14} color={"#fff"} />
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
+          </View>
         </LinearGradient>
       </View>
     );
@@ -91,6 +127,7 @@ const Index = () => {
           keyExtractor={(item) => item._id}
           style={homeStyles.todoList}
           contentContainerStyle={homeStyles.todoListContent}
+          ListEmptyComponent={<EmptyState />}
         />
       </SafeAreaView>
     </LinearGradient>
