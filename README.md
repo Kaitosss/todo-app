@@ -62,8 +62,13 @@ cd todo-app
 ```
 npm install
 ```
-3. Run the App
+3. Run the app
 
 ```
-npx expo start
+npx expo
+```
+
+4. Run the Convex db
+```
+npx convex dev
 ```
