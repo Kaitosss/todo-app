@@ -5,7 +5,7 @@ import ProgressStats from "@/components/ProgressStats";
 import { useTheme } from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import { ScrollView, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Settings = () => {
@@ -27,6 +27,8 @@ const Settings = () => {
             >
               <Ionicons name="settings" size={28} color={"#ffffff"} />
             </LinearGradient>
+
+            <Text style={settingStyles.title}>Settings</Text>
           </View>
         </View>
 
