@@ -1,4 +1,5 @@
 import createSettingsStyles from "@/assets/styles/settings.styles";
+import DangerZone from "@/components/DangerZone";
 import Preferences from "@/components/Preferences";
 import ProgressStats from "@/components/ProgressStats";
 import { useTheme } from "@/hooks/useTheme";
@@ -36,6 +37,7 @@ const Settings = () => {
         >
           <ProgressStats />
           <Preferences />
+          <DangerZone />
         </ScrollView>
       </SafeAreaView>
     </LinearGradient>
