@@ -1,4 +1,5 @@
 import createSettingsStyles from "@/assets/styles/settings.styles";
+import Preferences from "@/components/Preferences";
 import ProgressStats from "@/components/ProgressStats";
 import { useTheme } from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
@@ -7,7 +8,7 @@ import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Settings = () => {
-  const { colors, isDarkMode, toggleDarkMode } = useTheme();
+  const { colors } = useTheme();
 
   const settingStyles = createSettingsStyles(colors);
 
@@ -34,6 +35,7 @@ const Settings = () => {
           showsHorizontalScrollIndicator={false}
         >
           <ProgressStats />
+          <Preferences />
         </ScrollView>
       </SafeAreaView>
     </LinearGradient>
